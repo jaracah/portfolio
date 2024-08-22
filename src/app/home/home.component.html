@@ -1,19 +1,24 @@
 <div style="display: flex; justify-content: center;">
-    <mat-grid-list cols=2 rowHeight="2:1" style="width: 75%; margin-top: 50px;">
+    <mat-grid-list [cols]="cols" rowHeight="300px" style="width: 75%; margin-top: 50px;" gutterSize="10">
         <mat-grid-tile [style.border]="'1px solid white'">
-            <!-- Content of each cell goes here -->
+            cell
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px solid white'" [colspan]="1">
+            <div>
+                <h1>Jaracah Teague</h1>
+                <p>Full Stack Developer</p>
+            </div>
+            <div style="align-self: center;">
+                <img src="https://via.placeholder.com/250" alt="Placeholder Image" style="border-radius: 50%;">
+            </div>
+        </mat-grid-tile>
+        <mat-grid-tile [style.border]="'1px solid white'">
             cell
         </mat-grid-tile>
         <mat-grid-tile [style.border]="'1px solid white'">
-            <!-- Content of each cell goes here -->
             cell
         </mat-grid-tile>
         <mat-grid-tile [style.border]="'1px solid white'">
-            <!-- Content of each cell goes here -->
-            cell
-        </mat-grid-tile>
-        <mat-grid-tile [style.border]="'1px solid white'">
-            <!-- Content of each cell goes here -->
             cell
         </mat-grid-tile>
     </mat-grid-list>
