@@ -25,9 +25,24 @@
 // @include mat.color-variants-backwards-compatibility(<theme_name>);
 
 html, body { height: 100%; }
-body { background-color: #161b24; color: #ffffff; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body { 
+  background-color: #161b24; 
+  color: #ffffff; 
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+mat-grid-tile {
+  &:hover {
+    background-color: #ffffff10;
+  }
+}
 
 mat-grid-tile .mat-grid-tile-content {
   justify-content: center;
   align-items: flex-start;
+}
+
+p, sub {
+  color: #ffffffb7;
 }
