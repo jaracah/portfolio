@@ -69,8 +69,8 @@ import { socials } from '../data/socials';
 				<h2 class="section-title">About</h2>
 				<div class="about-content">
 					<p>
-						Write a bit about yourself here — your background, what you enjoy building,
-						and what drives your work.
+						I am a software engineer from North Carolina. I graduated with a Bachelor's Degree
+						in Computer Science from Appalachian State University in 2022.
 					</p>
 				</div>
 			</div>
@@ -96,20 +96,16 @@ import { socials } from '../data/socials';
 		padding: 0 2rem;
 	}
 
-	/* Hero — full viewport, centered */
+	/* Hero */
 	.hero {
 		min-height: 100dvh;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		width: 100%;
-		position: relative;
+		padding: 64px 0 2rem;
 	}
 
 	.scroll-down {
-		position: absolute;
-		bottom: 2rem;
-		right: 2rem;
 		color: var(--text-muted);
 		border: 1px solid var(--border);
 		width: 40px;
@@ -118,18 +114,11 @@ import { socials } from '../data/socials';
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		transition: color var(--transition), border-color var(--transition);
-		animation: bounce 2s infinite;
-	}
-
-	.projects .scroll-down,
-	.about .scroll-down {
-		position: relative;
-		bottom: auto;
-		right: auto;
 		margin-top: 2.5rem;
 		margin-left: auto;
 		margin-right: 2rem;
+		transition: color var(--transition), border-color var(--transition);
+		animation: bounce 2s infinite;
 	}
 
 	.scroll-down:hover {
@@ -143,9 +132,11 @@ import { socials } from '../data/socials';
 	}
 
 	.hero-inner {
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		text-align: center;
 		gap: 1.5rem;
 	}
