@@ -25,6 +25,6 @@ Features include:
 - **Cook Mode:** interactive step-by-step cooking with the ability to invite friends to cook along in real time
 - **Notifications:** push notifications for social activity and meal reminders
 
-Go has quickly become one of my favorite languages -- I use it daily at work building microservices and internal tooling, and this app keeps me pushing further with it outside of working hours.
+The backend is hosted on Google Cloud Platform, with infrastructure managed through Terraform. Go has quickly become one of my favorite languages -- I use it daily at work building microservices and internal tooling, and this app keeps me pushing further with it outside of working hours.
 
-The code is in a private repo for now, but I'm happy to demo the live version or walk through specific technical decisions. It's been a good reminder that the best way to learn new tech is to build something you'll actually use.
+Targeting a 2026 release. The code is in a private repo for now, but I'm happy to demo the live version or walk through specific technical decisions. 
