@@ -74,7 +74,7 @@ const { images } = Astro.props;
 
 	.gallery-viewport {
 		position: relative;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 4 / 3;
 	}
 
 	.gallery-slide {
@@ -82,7 +82,7 @@ const { images } = Astro.props;
 		inset: 0;
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		opacity: 0;
 		transition: opacity 0.4s ease;
 	}

@@ -39,7 +39,7 @@ const { slug, title, summary, tags, thumbnail } = Astro.props;
 	}
 
 	.card-image {
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 4 / 3;
 		overflow: hidden;
 		background: var(--bg-secondary);
 	}
@@ -47,7 +47,7 @@ const { slug, title, summary, tags, thumbnail } = Astro.props;
 	.card-image img {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
 		transition: transform var(--transition);
 	}
 

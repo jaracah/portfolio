@@ -16,11 +16,11 @@ export const projects: Project[] = [
 		summary: 'A social platform for sharing, discovering, and organizing recipes.',
 		description:
 			'A full-featured recipe management app with a social twist. Users can create and organize their own recipes, follow other home cooks, and discover new dishes through a curated feed. Includes features like ingredient-based search, meal planning, and the ability to fork and remix other users\' recipes.',
-		tags: [],
+		tags: ["Go", "Swift", "Postgres", "Terraform", "GenAI", "Google Cloud Platform"],
 		images: [
-			{ src: '/images/recipe-manager/1.png', alt: 'Recipe feed' },
-			{ src: '/images/recipe-manager/2.png', alt: 'Recipe detail view' },
-			{ src: '/images/recipe-manager/3.png', alt: 'User profile and collections' },
+			{ src: '/images/recipe-manager/feed-1.png', alt: 'Recipe feed' },
+			{ src: '/images/recipe-manager/recipe-detail-1.png', alt: 'Recipe detail view' },
+			{ src: '/images/recipe-manager/profile-1.png', alt: 'User profile and collections' },
 		],
 		links: [],
 	},
@@ -32,9 +32,9 @@ export const projects: Project[] = [
 			'A smart birdhouse built around a Raspberry Pi with a camera module. Captures photos and video when motion is detected, streams a live feed, and logs bird activity over time. The enclosure is weather-sealed and solar-powered for hands-off outdoor deployment.',
 		tags: ['Raspberry Pi', 'Python'],
 		images: [
-			{ src: '/images/birdhouse-camera/1.png', alt: 'Birdhouse exterior' },
-			{ src: '/images/birdhouse-camera/2.png', alt: 'Camera feed with bird detected' },
-			{ src: '/images/birdhouse-camera/3.png', alt: 'Activity dashboard' },
+			{ src: '/images/birdhouse/house-1.jpeg', alt: 'Birdhouse Exterior 1' },
+			{ src: '/images/birdhouse/pi-setup-1.jpeg', alt: 'Raspberry Pi Setup' },
+			{ src: '/images/birdhouse/house-2.jpeg', alt: 'Raspberry Pi Water Proof Housing' },
 		],
 		links: [],
 	},

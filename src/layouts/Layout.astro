@@ -4,7 +4,7 @@ interface Props {
 	description?: string;
 }
 
-const { title = 'Portfolio', description = 'My work and projects' } = Astro.props;
+const { title = 'Jaracah Teague', description = 'My work and projects' } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,7 +21,7 @@ const { title = 'Portfolio', description = 'My work and projects' } = Astro.prop
 		<slot />
 		<script>
 			const hoverSound = new Audio('/hover.mp3');
-			hoverSound.volume = 0.3;
+			hoverSound.volume = 0.0;
 
 			document.addEventListener('pointerenter', (e) => {
 				const target = e.target as HTMLElement;
