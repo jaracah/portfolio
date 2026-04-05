@@ -57,6 +57,11 @@ import { socials } from '../data/socials';
 					<p class="empty">Projects coming soon.</p>
 				)}
 			</div>
+			<a href="#about" class="scroll-down" aria-label="Scroll to about">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</a>
 		</section>
 
 		<section class="about" id="about">
@@ -69,6 +74,11 @@ import { socials } from '../data/socials';
 					</p>
 				</div>
 			</div>
+			<a href="#top" class="scroll-down" aria-label="Back to top">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 15 12 9 18 15"></polyline>
+				</svg>
+			</a>
 		</section>
 	</main>
 
@@ -110,6 +120,16 @@ import { socials } from '../data/socials';
 		justify-content: center;
 		transition: color var(--transition), border-color var(--transition);
 		animation: bounce 2s infinite;
+	}
+
+	.projects .scroll-down,
+	.about .scroll-down {
+		position: relative;
+		bottom: auto;
+		right: auto;
+		margin-top: 2.5rem;
+		margin-left: auto;
+		margin-right: 2rem;
 	}
 
 	.scroll-down:hover {
@@ -185,8 +205,9 @@ import { socials } from '../data/socials';
 
 	/* Projects */
 	.projects {
-		padding: 4rem 0;
+		padding: 4rem 0 5rem;
 		scroll-margin-top: 80px;
+		position: relative;
 	}
 
 	.project-grid {
@@ -205,6 +226,7 @@ import { socials } from '../data/socials';
 		padding: 4rem 0;
 		min-height: 100dvh;
 		scroll-margin-top: 80px;
+		position: relative;
 	}
 
 	.about-content {
