@@ -1,0 +1,86 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { title = 'Portfolio', description = 'My work and projects' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+		<script>
+			const hoverSound = new Audio('/hover.mp3');
+			hoverSound.volume = 0.3;
+
+			document.addEventListener('pointerenter', (e) => {
+				const target = e.target as HTMLElement;
+				if (target.matches('a, button, [role="button"]') || target.closest('a, button, [role="button"]')) {
+					hoverSound.currentTime = 0;
+					hoverSound.play().catch(() => {});
+				}
+			}, true);
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+	:root {
+		--bg: #0a0a0a;
+		--bg-secondary: #111111;
+		--bg-card: #161616;
+		--border: #222222;
+		--text: #e5e5e5;
+		--text-muted: #888888;
+		--accent: #e0e0e0;
+		--font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		--max-width: 1200px;
+		--transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	*, *::before, *::after {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html {
+		font-family: var(--font);
+		background: var(--bg);
+		color: var(--text);
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	body {
+		min-height: 100dvh;
+		line-height: 1.6;
+	}
+
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+	}
+
+	::selection {
+		background: rgba(255, 255, 255, 0.15);
+	}
+</style>

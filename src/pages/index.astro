@@ -1,0 +1,200 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects } from '../data/projects';
+---
+
+<Layout title="Portfolio">
+	<Header />
+
+	<main>
+		<section class="hero">
+			<div class="hero-inner">
+				<div class="photo">
+					<img src="/images/portrait.jpg" alt="Jaracah" />
+				</div>
+				<h1>Jaracah</h1>
+				<p class="bio">Brief tagline about what you do.</p>
+			</div>
+			<a href="#projects" class="scroll-down" aria-label="Scroll to projects">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</a>
+		</section>
+
+		<section class="projects" id="projects">
+			<div class="container">
+				<h2 class="section-title">Projects</h2>
+				{projects.length > 0 ? (
+					<div class="project-grid">
+						{projects.map((project) => (
+							<ProjectCard
+								slug={project.slug}
+								title={project.title}
+								summary={project.summary}
+								tags={project.tags}
+								thumbnail={project.images[0]?.src ?? ''}
+							/>
+						))}
+					</div>
+				) : (
+					<p class="empty">Projects coming soon.</p>
+				)}
+			</div>
+		</section>
+
+		<section class="about" id="about">
+			<div class="container">
+				<h2 class="section-title">About</h2>
+				<div class="about-content">
+					<p>
+						Write a bit about yourself here — your background, what you enjoy building,
+						and what drives your work.
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		padding-top: 0;
+	}
+
+	.container {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* Hero — full viewport, centered */
+	.hero {
+		min-height: 100dvh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+		position: relative;
+	}
+
+	.scroll-down {
+		position: absolute;
+		bottom: 2rem;
+		right: 2rem;
+		color: var(--text-muted);
+		border: 1px solid var(--border);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: color var(--transition), border-color var(--transition);
+		animation: bounce 2s infinite;
+	}
+
+	.scroll-down:hover {
+		color: var(--text);
+		border-color: #444;
+	}
+
+	@keyframes bounce {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(4px); }
+	}
+
+	.hero-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	.photo {
+		width: 160px;
+		height: 160px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 2px solid var(--border);
+	}
+
+	.photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.bio {
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		color: var(--text-muted);
+		max-width: 450px;
+		font-weight: 300;
+		line-height: 1.6;
+	}
+
+	/* Sections */
+	.section-title {
+		font-size: 0.8rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--text-muted);
+		margin-bottom: 2.5rem;
+	}
+
+	/* Projects */
+	.projects {
+		padding: 4rem 0;
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.empty {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	/* About */
+	.about {
+		padding: 4rem 0;
+	}
+
+	.about-content {
+		max-width: 600px;
+	}
+
+	.about-content p {
+		color: var(--text-muted);
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	@media (max-width: 480px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.photo {
+			width: 130px;
+			height: 130px;
+		}
+	}
+</style>

@@ -1,0 +1,60 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+	<nav>
+		<a href="/" class="logo">Jaracah</a>
+		<div class="nav-links">
+			<a href="/#projects" class:list={{ active: currentPath === '/' }}>Work</a>
+			<a href="/#about" class:list={{ active: false }}>About</a>
+		</div>
+	</nav>
+</header>
+
+<style>
+	header {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		background: rgba(10, 10, 10, 0.8);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--border);
+	}
+
+	nav {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 2rem;
+		height: 64px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.logo {
+		font-weight: 600;
+		font-size: 1.1rem;
+		letter-spacing: -0.02em;
+	}
+
+	.nav-links {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.nav-links a {
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		transition: color var(--transition);
+		font-weight: 400;
+	}
+
+	.nav-links a:hover,
+	.nav-links a.active {
+		color: var(--text);
+	}
+</style>
