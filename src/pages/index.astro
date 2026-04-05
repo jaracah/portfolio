@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { projects } from '../data/projects';
+import { socials } from '../data/socials';
 ---
 
 <Layout>
@@ -17,6 +18,18 @@ import { projects } from '../data/projects';
 				</div>
 				<h1>Jaracah</h1>
 				<p class="bio">Software Engineer, Computer Enthusiast.</p>
+				<div class="socials">
+					{socials.map((social) => (
+						<a
+							href={social.url}
+							target={social.url.startsWith('mailto:') ? undefined : '_blank'}
+							rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+							aria-label={social.label}
+						>
+							<Fragment set:html={social.icon} />
+						</a>
+					))}
+				</div>
 			</div>
 			<a href="#projects" class="scroll-down" aria-label="Scroll to projects">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -144,6 +157,20 @@ import { projects } from '../data/projects';
 		max-width: 450px;
 		font-weight: 300;
 		line-height: 1.6;
+	}
+
+	.socials {
+		display: flex;
+		gap: 1.25rem;
+	}
+
+	.socials a {
+		color: var(--text-muted);
+		transition: color var(--transition);
+	}
+
+	.socials a:hover {
+		color: var(--text);
 	}
 
 	/* Sections */
