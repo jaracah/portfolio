@@ -110,6 +110,18 @@ const { Content } = await render(project);
 		line-height: 1.8;
 	}
 
+	.description :global(ul) {
+		list-style: disc;
+		padding-left: 1.25rem;
+		margin: 1rem 0;
+	}
+
+	.description :global(li) {
+		font-size: 1rem;
+		color: var(--text-muted);
+		line-height: 1.8;
+	}
+
 	.links {
 		display: flex;
 		flex-wrap: wrap;

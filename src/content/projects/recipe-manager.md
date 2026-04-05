@@ -1,8 +1,8 @@
 ---
 title: Social Recipe Manager
-summary: A social platform for sharing, discovering, and organizing recipes.
+summary: A full-stack recipe app built with Go, Swift, and a passion for good food.
 order: 1
-tags: [Go, Swift, Postgres, Terraform, GenAI, Google Cloud Platform]
+tags: [Go, Swift, PostgreSQL, Terraform, GenAI, Google Cloud Platform]
 images:
   - src: /images/recipe-manager/feed-1.png
     alt: Recipe feed
@@ -13,4 +13,17 @@ images:
 links: []
 ---
 
-A full-featured recipe management app with a social twist. Users can create and organize their own recipes, follow other home cooks, and discover new dishes through a curated feed. Includes features like ingredient-based search, meal planning, and the ability to fork and remix other users' recipes.
+A full-stack, social recipe management platform. The mobile app is built natively in Swift for iOS, backed by a Go API structured with a layered architecture for clean separation of concerns. Authentication is handled via OAuth, and the data lives in PostgreSQL.
+
+Features include:
+
+- Recipe CRUD with user profiles and group sharing
+- Ingredient-based search
+- Social feed with custom trending algorithms
+- Fork and remix other users' recipes
+- Calendar-based meal planning
+- Shopping lists integrated with recipes
+- Recipe importing via manual entry, web scraping with multiple parsing strategies, or free text and handwriting recognition using generative AI.
+Go has quickly become one of my favorite languages -- I use it daily at work building microservices and internal tooling, and this app keeps me pushing further with it outside of working hours.
+
+The code is in a private repo for now, but I'm happy to demo the live version or walk through specific technical decisions. It's been a good reminder that the best way to learn new tech is to build something you'll actually use.
