@@ -1,10 +1,12 @@
 ---
+import { site } from '../data/site';
+
 interface Props {
 	title?: string;
 	description?: string;
 }
 
-const { title = 'Jaracah Teague - Portfolio', description = 'My work and projects' } = Astro.props;
+const { title = `${site.fullName} - Portfolio`, description = 'My work and projects' } = Astro.props;
 ---
 
 <!doctype html>

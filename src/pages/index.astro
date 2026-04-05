@@ -3,8 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { projects } from '../data/projects';
+import { getCollection, getEntry, render } from 'astro:content';
 import { socials } from '../data/socials';
+import { site } from '../data/site';
+
+const projectEntries = await getCollection('projects');
+projectEntries.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const aboutEntry = await getEntry('about', 'index');
+const { Content: AboutContent } = await render(aboutEntry);
 ---
 
 <Layout>
@@ -14,9 +21,9 @@ import { socials } from '../data/socials';
 		<section class="hero" id="top">
 			<div class="hero-inner">
 				<div class="photo">
-					<img src="/images/me/yosemite.jpeg" alt="Jaracah" />
+					<img src="/images/me/yosemite.jpeg" alt={site.firstName} />
 				</div>
-				<h1>Jaracah</h1>
+				<h1>{site.firstName}</h1>
 				<p class="bio">Software Engineer, Computer Enthusiast.</p>
 				<div class="socials">
 					{socials.map((social) => (
@@ -31,7 +38,7 @@ import { socials } from '../data/socials';
 					))}
 				</div>
 			</div>
-			<a href="#projects" class="scroll-down" aria-label="Scroll to projects">
+			<a href="#projects" class="scroll-jump-button" aria-label="Scroll to projects">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="6 9 12 15 18 9"></polyline>
 				</svg>
@@ -41,15 +48,15 @@ import { socials } from '../data/socials';
 		<section class="projects" id="projects">
 			<div class="container">
 				<h2 class="section-title">Projects</h2>
-				{projects.length > 0 ? (
+				{projectEntries.length > 0 ? (
 					<div class="project-grid">
-						{projects.map((project) => (
+						{projectEntries.map((project) => (
 							<ProjectCard
-								slug={project.slug}
-								title={project.title}
-								summary={project.summary}
-								tags={project.tags}
-								thumbnail={project.images[0]?.src ?? ''}
+								slug={project.id}
+								title={project.data.title}
+								summary={project.data.summary}
+								tags={project.data.tags}
+								thumbnail={project.data.images[0]?.src ?? ''}
 							/>
 						))}
 					</div>
@@ -57,7 +64,7 @@ import { socials } from '../data/socials';
 					<p class="empty">Projects coming soon.</p>
 				)}
 			</div>
-			<a href="#about" class="scroll-down" aria-label="Scroll to about">
+			<a href="#about" class="scroll-jump-button" aria-label="Scroll to about">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="6 9 12 15 18 9"></polyline>
 				</svg>
@@ -68,13 +75,10 @@ import { socials } from '../data/socials';
 			<div class="container">
 				<h2 class="section-title">About</h2>
 				<div class="about-content">
-					<p>
-						I am a software engineer from North Carolina. I graduated with a Bachelor's Degree
-						in Computer Science from Appalachian State University in 2022.
-					</p>
+					<AboutContent />
 				</div>
 			</div>
-			<a href="#top" class="scroll-down" aria-label="Back to top">
+			<a href="#top" class="scroll-jump-button" aria-label="Back to top">
 				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 					<polyline points="6 15 12 9 18 15"></polyline>
 				</svg>
@@ -105,7 +109,7 @@ import { socials } from '../data/socials';
 		padding: 64px 0 2rem;
 	}
 
-	.scroll-down {
+	.scroll-jump-button {
 		color: var(--text-muted);
 		border: 1px solid var(--border);
 		width: 40px;
@@ -121,7 +125,7 @@ import { socials } from '../data/socials';
 		animation: bounce 2s infinite;
 	}
 
-	.scroll-down:hover {
+	.scroll-jump-button:hover {
 		color: var(--text);
 		border-color: #444;
 	}
