@@ -1,10 +1,23 @@
 ---
+import { socials } from '../data/socials';
 const year = new Date().getFullYear();
 ---
 
 <footer>
 	<div class="footer-inner">
 		<p class="copyright">&copy; {year}</p>
+		<div class="footer-socials">
+			{socials.map((social) => (
+				<a
+					href={social.url}
+					target={social.url.startsWith('mailto:') ? undefined : '_blank'}
+					rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+					aria-label={social.label}
+				>
+					<Fragment set:html={social.icon} />
+				</a>
+			))}
+		</div>
 	</div>
 </footer>
 
@@ -12,7 +25,7 @@ const year = new Date().getFullYear();
 	footer {
 		border-top: 1px solid var(--border);
 		padding: 2rem;
-		margin-top: 6rem;
+		margin-top: 0;
 	}
 
 	.footer-inner {
@@ -26,5 +39,24 @@ const year = new Date().getFullYear();
 	.copyright {
 		font-size: 0.8rem;
 		color: var(--text-muted);
+	}
+
+	.footer-socials {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.footer-socials :global(a) {
+		color: var(--text-muted);
+		transition: color var(--transition);
+	}
+
+	.footer-socials :global(a:hover) {
+		color: var(--text);
+	}
+
+	.footer-socials :global(svg) {
+		width: 18px;
+		height: 18px;
 	}
 </style>
