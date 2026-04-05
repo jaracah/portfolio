@@ -17,13 +17,14 @@ A full-stack, social recipe management platform. The mobile app is built nativel
 
 Features include:
 
-- Recipe CRUD with user profiles and group sharing
-- Ingredient-based search
-- Social feed with custom trending algorithms
-- Fork and remix other users' recipes
-- Calendar-based meal planning
-- Shopping lists integrated with recipes
-- Recipe importing via manual entry, web scraping with multiple parsing strategies, or free text and handwriting recognition using generative AI.
+- **Recipes:** create, organize, fork and save from other users
+- **Social:** user profiles, group sharing, trending feed with custom algorithms
+- **Planning:** calendar based meal planning with integrated shopping lists
+- **Search:** find recipes by ingredient combinations, name, or tag
+- **Import:** manual entry, web scraping with multiple parsing strategies, or free text and handwriting recognition via generative AI
+- **Cook Mode:** interactive step-by-step cooking with the ability to invite friends to cook along in real time
+- **Notifications:** push notifications for social activity and meal reminders
+
 Go has quickly become one of my favorite languages -- I use it daily at work building microservices and internal tooling, and this app keeps me pushing further with it outside of working hours.
 
 The code is in a private repo for now, but I'm happy to demo the live version or walk through specific technical decisions. It's been a good reminder that the best way to learn new tech is to build something you'll actually use.
