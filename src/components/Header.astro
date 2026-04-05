@@ -6,11 +6,32 @@ const currentPath = Astro.url.pathname;
 	<nav>
 		<a href="/" class="logo">Jaracah</a>
 		<div class="nav-links">
-			<a href="/#projects" class:list={{ active: currentPath === '/' }}>Work</a>
-			<a href="/#about" class:list={{ active: false }}>About</a>
+			<a href="#top" data-section="top">Home</a>
+			<a href="#projects" data-section="projects">Work</a>
+			<a href="#about" data-section="about">About</a>
 		</div>
 	</nav>
 </header>
+
+<script>
+	const links = document.querySelectorAll<HTMLAnchorElement>('.nav-links a[data-section]');
+	const sections = document.querySelectorAll<HTMLElement>('section[id]');
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			for (const entry of entries) {
+				if (entry.isIntersecting) {
+					links.forEach((link) => link.classList.remove('active'));
+					const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+					active?.classList.add('active');
+				}
+			}
+		},
+		{ rootMargin: '-50% 0px -50% 0px' }
+	);
+
+	sections.forEach((section) => observer.observe(section));
+</script>
 
 <style>
 	header {
