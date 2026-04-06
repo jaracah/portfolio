@@ -21,18 +21,6 @@ const { title = `${site.fullName} - Portfolio`, description = 'My work and proje
 	</head>
 	<body>
 		<slot />
-		<script>
-			const hoverSound = new Audio('/sounds/hover.mp3');
-			hoverSound.volume = 0.0;
-
-			document.addEventListener('pointerenter', (e) => {
-				const target = e.target as HTMLElement;
-				if (target.matches('a, button, [role="button"]') || target.closest('a, button, [role="button"]')) {
-					hoverSound.currentTime = 0;
-					hoverSound.play().catch(() => {});
-				}
-			}, true);
-		</script>
 	</body>
 </html>
 
