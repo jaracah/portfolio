@@ -17,6 +17,7 @@ const { images } = Astro.props;
 					class:list={['gallery-slide', { active: i === 0 }]}
 					data-index={i}
 					loading={i === 0 ? 'eager' : 'lazy'}
+					draggable="false"
 				/>
 			))}
 		</div>
@@ -58,6 +59,30 @@ const { images } = Astro.props;
 		dots.forEach((dot) => {
 			dot.addEventListener('click', () => goTo(Number(dot.dataset.dot)));
 		});
+
+		const viewport = gallery.querySelector('.gallery-viewport') as HTMLElement;
+		viewport.style.touchAction = 'pan-y';
+		let startX = 0;
+		let activePointerId: number | null = null;
+
+		viewport.addEventListener('pointerdown', (e) => {
+			if (!e.isPrimary || (e.pointerType === 'mouse' && e.button !== 0)) return;
+			activePointerId = e.pointerId;
+			startX = e.clientX;
+			viewport.setPointerCapture(e.pointerId);
+		});
+
+		viewport.addEventListener('pointerup', (e) => {
+			if (e.pointerId !== activePointerId) return;
+			activePointerId = null;
+			const diff = startX - e.clientX;
+			if (Math.abs(diff) > 50) {
+				goTo(diff > 0 ? current + 1 : current - 1);
+			}
+		});
+
+		viewport.addEventListener('pointercancel', () => { activePointerId = null; });
+		viewport.addEventListener('lostpointercapture', () => { activePointerId = null; });
 	});
 </script>
 
@@ -77,6 +102,7 @@ const { images } = Astro.props;
 	.gallery-viewport {
 		position: relative;
 		aspect-ratio: 4 / 3;
+		user-select: none;
 	}
 
 	.gallery-slide {
@@ -85,6 +111,7 @@ const { images } = Astro.props;
 		width: 100%;
 		height: 100%;
 		object-fit: contain;
+		-webkit-user-drag: none;
 		opacity: 0;
 		transition: opacity 0.4s ease;
 	}
