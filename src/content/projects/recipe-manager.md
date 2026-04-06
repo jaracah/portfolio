@@ -10,6 +10,8 @@ images:
     alt: Recipe detail view
   - src: /images/recipe-manager/profile-1.png
     alt: User profile and collections
+  - src: /images/recipe-manager/add-recipe-1.png
+    alt: Add recipe view
 links: []
 ---
 
