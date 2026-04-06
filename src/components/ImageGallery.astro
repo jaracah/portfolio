@@ -59,30 +59,22 @@ const { images } = Astro.props;
 			dot.addEventListener('click', () => goTo(Number(dot.dataset.dot)));
 		});
 
-		// Swipe and drag support
+		// Swipe and drag support via Pointer Events
 		const viewport = gallery.querySelector('.gallery-viewport') as HTMLElement;
+		viewport.style.touchAction = 'pan-y';
 		let startX = 0;
-		let dragging = false;
 
-		function onStart(x: number) {
-			startX = x;
-			dragging = true;
-		}
+		viewport.addEventListener('pointerdown', (e) => {
+			startX = e.clientX;
+			viewport.setPointerCapture(e.pointerId);
+		});
 
-		function onEnd(x: number) {
-			if (!dragging) return;
-			dragging = false;
-			const diff = startX - x;
+		viewport.addEventListener('pointerup', (e) => {
+			const diff = startX - e.clientX;
 			if (Math.abs(diff) > 50) {
 				goTo(diff > 0 ? current + 1 : current - 1);
 			}
-		}
-
-		viewport.addEventListener('touchstart', (e) => onStart(e.touches[0].clientX), { passive: true });
-		viewport.addEventListener('touchend', (e) => onEnd(e.changedTouches[0].clientX));
-		viewport.addEventListener('mousedown', (e) => { onStart(e.clientX); e.preventDefault(); });
-		viewport.addEventListener('mouseup', (e) => onEnd(e.clientX));
-		viewport.addEventListener('mouseleave', () => { dragging = false; });
+		});
 	});
 </script>
 
