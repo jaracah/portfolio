@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ImageGallery from '../../components/ImageGallery.astro';
+import { getCollection, render } from 'astro:content';
+import { site } from '../../data/site';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout title={`${project.data.title} - ${site.fullName}`}>
+	<Header />
+
+	<main>
+		<div class="container">
+			<a href="/#projects" class="back">&larr; Back</a>
+
+			<h1>{project.data.title}</h1>
+
+			<div class="tags">
+				{project.data.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+			</div>
+
+			<ImageGallery images={project.data.images} />
+
+			<div class="description">
+				<Content />
+			</div>
+
+			{project.data.links && project.data.links.length > 0 && (
+				<div class="links">
+					{project.data.links.map((link: { label: string; url: string }) => (
+						<a href={link.url} target="_blank" rel="noopener noreferrer" class="link-btn">
+							{link.label} &rarr;
+						</a>
+					))}
+				</div>
+			)}
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		padding-top: 64px;
+	}
+
+	.container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	.back {
+		display: inline-block;
+		margin: 2.5rem 0 3rem;
+		font-size: 0.875rem;
+		color: var(--text-muted);
+		transition: color var(--transition);
+	}
+
+	.back:hover {
+		color: var(--text);
+	}
+
+	h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+		margin-bottom: 1rem;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-bottom: 2rem;
+	}
+
+	.tag {
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		background: var(--bg-secondary);
+		padding: 0.25rem 0.625rem;
+		border-radius: 999px;
+		border: 1px solid var(--border);
+	}
+
+	.description {
+		max-width: 700px;
+		margin-bottom: 2rem;
+	}
+
+	.description :global(p) {
+		font-size: 1rem;
+		color: var(--text-muted);
+		line-height: 1.8;
+	}
+
+	.description :global(ul) {
+		list-style: disc;
+		padding-left: 1.25rem;
+		margin: 1rem 0;
+	}
+
+	.description :global(li) {
+		font-size: 1rem;
+		color: var(--text-muted);
+		line-height: 1.8;
+	}
+
+	.description :global(strong) {
+		color: var(--text);
+		font-weight: 500;
+	}
+
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.link-btn {
+		display: inline-block;
+		font-size: 0.875rem;
+		color: var(--text);
+		border: 1px solid var(--border);
+		padding: 0.625rem 1.25rem;
+		border-radius: 8px;
+		transition: border-color var(--transition), background var(--transition);
+	}
+
+	.link-btn:hover {
+		border-color: #444;
+		background: var(--bg-card);
+	}
+</style>

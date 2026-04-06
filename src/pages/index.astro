@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import { socials } from '../data/socials';
+import { site } from '../data/site';
+
+const projectEntries = await getCollection('projects');
+projectEntries.sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+
+const aboutEntry = await getEntry('about', 'index');
+const { Content: AboutContent } = await render(aboutEntry);
+---
+
+<Layout>
+	<Header />
+
+	<main>
+		<section class="hero" id="top">
+			<div class="hero-inner">
+				<div class="photo">
+					<img src="/images/me/yosemite.jpeg" alt={site.firstName} />
+				</div>
+				<h1>{site.firstName}</h1>
+				<p class="bio">Software Engineer, Computer Enthusiast.</p>
+				<div class="socials">
+					{socials.map((social) => (
+						<a
+							href={social.url}
+							target={social.url.startsWith('mailto:') ? undefined : '_blank'}
+							rel={social.url.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+							aria-label={social.label}
+						>
+							<Fragment set:html={social.icon} />
+						</a>
+					))}
+				</div>
+			</div>
+			<a href="#projects" class="scroll-jump-button" aria-label="Scroll to projects">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</a>
+		</section>
+
+		<section class="projects" id="projects">
+			<div class="container">
+				<h2 class="section-title">Projects</h2>
+				{projectEntries.length > 0 ? (
+					<div class="project-grid">
+						{projectEntries.map((project) => (
+							<ProjectCard
+								slug={project.id}
+								title={project.data.title}
+								summary={project.data.summary}
+								tags={project.data.tags}
+								thumbnail={project.data.images[0]?.src ?? ''}
+							/>
+						))}
+					</div>
+				) : (
+					<p class="empty">Projects coming soon.</p>
+				)}
+			</div>
+			<a href="#about" class="scroll-jump-button" aria-label="Scroll to about">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"></polyline>
+				</svg>
+			</a>
+		</section>
+
+		<section class="about" id="about">
+			<div class="container">
+				<h2 class="section-title">About</h2>
+				<div class="about-content">
+					<AboutContent />
+				</div>
+			</div>
+			<a href="#top" class="scroll-jump-button" aria-label="Back to top">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 15 12 9 18 15"></polyline>
+				</svg>
+			</a>
+		</section>
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	main {
+		padding-top: 0;
+	}
+
+	.container {
+		max-width: var(--max-width);
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* Hero */
+	.hero {
+		min-height: 100dvh;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 64px 0 2rem;
+	}
+
+	.scroll-jump-button {
+		color: var(--text-muted);
+		border: 1px solid var(--border);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 2.5rem;
+		margin-left: auto;
+		margin-right: 2rem;
+		transition: color var(--transition), border-color var(--transition);
+		animation: bounce 2s infinite;
+	}
+
+	.scroll-jump-button:hover {
+		color: var(--text);
+		border-color: #444;
+	}
+
+	@keyframes bounce {
+		0%, 100% { transform: translateY(0); }
+		50% { transform: translateY(4px); }
+	}
+
+	.hero-inner {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 1.5rem;
+	}
+
+	.photo {
+		width: 240px;
+		height: 240px;
+		border-radius: 50%;
+		overflow: hidden;
+		border: 2px solid var(--border);
+	}
+
+	.photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	h1 {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		line-height: 1.1;
+	}
+
+	.bio {
+		font-size: clamp(1rem, 2vw, 1.15rem);
+		color: var(--text-muted);
+		max-width: 450px;
+		font-weight: 300;
+		line-height: 1.6;
+	}
+
+	.socials {
+		display: flex;
+		gap: 1.25rem;
+	}
+
+	.socials a {
+		color: var(--text-muted);
+		transition: color var(--transition);
+	}
+
+	.socials a:hover {
+		color: var(--text);
+	}
+
+	/* Sections */
+	.section-title {
+		font-size: 0.8rem;
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		color: var(--text-muted);
+		margin-bottom: 2.5rem;
+	}
+
+	/* Projects */
+	.projects {
+		padding: 4rem 0 5rem;
+		scroll-margin-top: 80px;
+		position: relative;
+	}
+
+	.project-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.empty {
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	/* About */
+	.about {
+		padding: 4rem 0;
+		scroll-margin-top: 80px;
+		position: relative;
+	}
+
+	.about-content {
+		max-width: 600px;
+	}
+
+	.about-content :global(p) {
+		color: var(--text-muted);
+		font-size: 1rem;
+		line-height: 1.8;
+	}
+
+	@media (max-width: 480px) {
+		.project-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.photo {
+			width: 180px;
+			height: 180px;
+		}
+	}
+</style>

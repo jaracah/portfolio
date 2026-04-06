@@ -1,0 +1,145 @@
+---
+interface Props {
+	images: { src: string; alt: string }[];
+}
+
+const { images } = Astro.props;
+---
+
+<div class="gallery" data-gallery>
+	{images.length > 0 && <div class="gallery-main">
+		{images.length > 1 && <button class="gallery-nav prev" data-prev aria-label="Previous image">&larr;</button>}
+		<div class="gallery-viewport">
+			{images.map((img, i) => (
+				<img
+					src={img.src}
+					alt={img.alt}
+					class:list={['gallery-slide', { active: i === 0 }]}
+					data-index={i}
+					loading={i === 0 ? 'eager' : 'lazy'}
+				/>
+			))}
+		</div>
+		{images.length > 1 && <button class="gallery-nav next" data-next aria-label="Next image">&rarr;</button>}
+	</div>}
+	{images.length > 1 && (
+		<div class="gallery-dots">
+			{images.map((_, i) => (
+				<button
+					class:list={['dot', { active: i === 0 }]}
+					data-dot={i}
+					aria-label={`View image ${i + 1}`}
+				/>
+			))}
+		</div>
+	)}
+</div>
+
+<script>
+	document.querySelectorAll('[data-gallery]').forEach((gallery) => {
+		const slides = gallery.querySelectorAll<HTMLImageElement>('.gallery-slide');
+		if (slides.length < 2) return;
+
+		const dots = gallery.querySelectorAll<HTMLButtonElement>('.dot');
+		const prevBtn = gallery.querySelector('[data-prev]');
+		const nextBtn = gallery.querySelector('[data-next]');
+		let current = 0;
+
+		function goTo(index: number) {
+			slides[current].classList.remove('active');
+			dots[current]?.classList.remove('active');
+			current = (index + slides.length) % slides.length;
+			slides[current].classList.add('active');
+			dots[current]?.classList.add('active');
+		}
+
+		prevBtn?.addEventListener('click', () => goTo(current - 1));
+		nextBtn?.addEventListener('click', () => goTo(current + 1));
+		dots.forEach((dot) => {
+			dot.addEventListener('click', () => goTo(Number(dot.dataset.dot)));
+		});
+	});
+</script>
+
+<style>
+	.gallery {
+		margin-bottom: 2rem;
+	}
+
+	.gallery-main {
+		position: relative;
+		border-radius: 12px;
+		overflow: hidden;
+		background: var(--bg-secondary);
+		border: 1px solid var(--border);
+	}
+
+	.gallery-viewport {
+		position: relative;
+		aspect-ratio: 4 / 3;
+	}
+
+	.gallery-slide {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		opacity: 0;
+		transition: opacity 0.4s ease;
+	}
+
+	.gallery-slide.active {
+		opacity: 1;
+	}
+
+	.gallery-nav {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 2;
+		background: rgba(0, 0, 0, 0.5);
+		backdrop-filter: blur(4px);
+		color: var(--text);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		cursor: pointer;
+		font-size: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity var(--transition);
+	}
+
+	.gallery-main:hover .gallery-nav {
+		opacity: 1;
+	}
+
+	.prev { left: 0.75rem; }
+	.next { right: 0.75rem; }
+
+	.gallery-dots {
+		display: flex;
+		justify-content: center;
+		gap: 0.5rem;
+		margin-top: 1rem;
+	}
+
+	.dot {
+		width: 8px;
+		height: 8px;
+		border-radius: 50%;
+		background: var(--border);
+		border: none;
+		cursor: pointer;
+		padding: 0;
+		transition: background var(--transition);
+	}
+
+	.dot.active {
+		background: var(--text);
+	}
+</style>
