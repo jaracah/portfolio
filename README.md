@@ -28,7 +28,7 @@ runs at `localhost:4321`.
 
 Pushes to `master` auto deploy to cloudflare pages.
 
-Pushes to any other branch deploy previews in cloudflare.
+Pushes to any other branch deploys a preview in cloudflare.
 
 Build command: `npm run build`
 Output directory: `dist`
