@@ -59,7 +59,6 @@ const { images } = Astro.props;
 			dot.addEventListener('click', () => goTo(Number(dot.dataset.dot)));
 		});
 
-		// Swipe and drag support via Pointer Events
 		const viewport = gallery.querySelector('.gallery-viewport') as HTMLElement;
 		viewport.style.touchAction = 'pan-y';
 		let startX = 0;
