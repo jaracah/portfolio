@@ -7,8 +7,8 @@ const { images } = Astro.props;
 ---
 
 <div class="gallery" data-gallery>
-	<div class="gallery-main">
-		<button class="gallery-nav prev" data-prev aria-label="Previous image">&larr;</button>
+	{images.length > 0 && <div class="gallery-main">
+		{images.length > 1 && <button class="gallery-nav prev" data-prev aria-label="Previous image">&larr;</button>}
 		<div class="gallery-viewport">
 			{images.map((img, i) => (
 				<img
@@ -20,8 +20,8 @@ const { images } = Astro.props;
 				/>
 			))}
 		</div>
-		<button class="gallery-nav next" data-next aria-label="Next image">&rarr;</button>
-	</div>
+		{images.length > 1 && <button class="gallery-nav next" data-next aria-label="Next image">&rarr;</button>}
+	</div>}
 	{images.length > 1 && (
 		<div class="gallery-dots">
 			{images.map((_, i) => (
@@ -38,6 +38,8 @@ const { images } = Astro.props;
 <script>
 	document.querySelectorAll('[data-gallery]').forEach((gallery) => {
 		const slides = gallery.querySelectorAll<HTMLImageElement>('.gallery-slide');
+		if (slides.length < 2) return;
+
 		const dots = gallery.querySelectorAll<HTMLButtonElement>('.dot');
 		const prevBtn = gallery.querySelector('[data-prev]');
 		const nextBtn = gallery.querySelector('[data-next]');

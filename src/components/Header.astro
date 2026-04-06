@@ -1,15 +1,14 @@
 ---
 import { site } from '../data/site';
-const currentPath = Astro.url.pathname;
 ---
 
 <header>
 	<nav>
 		<a href="/" class="logo">{site.fullName}</a>
 		<div class="nav-links">
-			<a href="#top" data-section="top">Home</a>
-			<a href="#projects" data-section="projects">Work</a>
-			<a href="#about" data-section="about">About</a>
+			<a href="/#top" data-section="top">Home</a>
+			<a href="/#projects" data-section="projects">Work</a>
+			<a href="/#about" data-section="about">About</a>
 		</div>
 	</nav>
 </header>
