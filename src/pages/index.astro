@@ -24,7 +24,7 @@ const { Content: AboutContent } = await render(aboutEntry);
 					<img src="/images/me/yosemite.jpeg" alt={site.firstName} />
 				</div>
 				<h1>{site.firstName}</h1>
-				<p class="bio">Software Engineer and Scrum Master</p>
+				<p class="bio">{aboutEntry.data.tagline}</p>
 				<p>@ Inmar Intelligence</p>
 				<div class="socials">
 					{socials.map((social) => (

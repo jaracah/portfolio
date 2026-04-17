@@ -1,5 +1,6 @@
 ---
 title: About
+tagline: Software Engineer and Scrum Master
 ---
 
 I'm a software engineer from North Carolina. I graduated with a Bachelor's in Computer Science from Appalachian State University in 2022.
