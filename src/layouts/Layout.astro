@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { socials } from '../data/socials';
 
 interface Props {
 	title?: string;
@@ -7,6 +8,18 @@ interface Props {
 }
 
 const { title = `${site.fullName} - Portfolio`, description = 'My work and projects' } = Astro.props;
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: site.fullName,
+	jobTitle: site.jobTitle,
+	worksFor: { '@type': 'Organization', name: site.company },
+	url: Astro.site?.toString(),
+	sameAs: socials
+		.filter((s) => !s.url.startsWith('mailto:'))
+		.map((s) => s.url),
+};
 ---
 
 <!doctype html>
@@ -18,6 +31,7 @@ const { title = `${site.fullName} - Portfolio`, description = 'My work and proje
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 	</head>
 	<body>
 		<slot />
