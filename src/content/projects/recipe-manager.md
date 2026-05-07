@@ -1,6 +1,6 @@
 ---
 title: Social Recipe Manager
-summary: A full-stack recipe app built with Go, Swift, and a passion for good food.
+summary: A full-stack, social recipe app, enhanced with AI features.
 order: 1
 tags: [Go, Swift, PostgreSQL, Terraform, GenAI, Google Cloud Platform]
 images:

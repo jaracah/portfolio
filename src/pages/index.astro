@@ -25,7 +25,7 @@ const { Content: AboutContent } = await render(aboutEntry);
 				</div>
 				<h1>{site.firstName}</h1>
 				<p class="bio">{aboutEntry.data.tagline}</p>
-				<p>@ Inmar Intelligence</p>
+				<p>@ {site.company}</p>
 				<div class="socials">
 					{socials.map((social) => (
 						<a
