@@ -30,5 +30,4 @@ Pushes to `master` auto deploy to cloudflare pages.
 
 Pushes to any other branch deploys a preview in cloudflare.
 
-Build command: `npm run build`
-Output directory: `dist`
+Build command: `npm run build` Output directory: `dist`
