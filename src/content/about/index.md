@@ -3,10 +3,25 @@ title: About
 tagline: Software Engineer and Scrum Master
 ---
 
-I'm a software engineer from North Carolina. I graduated with a Bachelor's in Computer Science from Appalachian State University in 2022.
+I'm a software engineer in North Carolina. I studied computer science at
+Appalachian State, and since 2022 I've been at Inmar Intelligence, where I
+started out building microservices on Hadoop as a new grad and now serve as tech
+lead and scrum master for two teams, most recently leading a division-wide
+migration to OAuth 2.0 and Auth0.
 
-I work as a software engineer and scrum master -- designing architecture, leading teams, and helping drive key technical decisions. My professional experience is in distributed systems and REST APIs, primarily in Go, Java with Spring Boot, and .NET.
+Most of my work lives in distributed systems and the infrastructure behind them:
+event-driven Go microservices, Kubernetes, and cloud architecture on GCP. I tend
+to end up owning the things that can't be allowed to break, like identity and
+auth across an entire division, financial processing pipelines, and platforms
+handling multi-terabyte healthcare datasets. I'm also deep in the AI side of
+engineering, not just using the tools but setting the standards and guardrails
+that took two teams from experimenting with agents to shipping with them in
+production daily.
 
-I'm a full-stack engineer but gravitate toward backend and cloud-native solutions, as well as automation. I have a particular interest in designing cloud architecture and am currently working toward the Google Professional Cloud Architect certification. Outside of work I enjoy traveling, cars, building things, and going to the gym.
+Outside of work I build things for myself: lately a social recipe platform with
+AI-powered imports, and algorithmic trading bots. Systems that run unattended
+with real money on the line have to be resilient by design, and that's the kind
+of thing I like building. Back in college, C and computer systems were what
+hooked me most, and I keep working at that level on my own time.
 
-I want to build systems that scale and solve real problems. Always interested in connecting -- whether it's about distributed systems, a side project, or just trading travel stories.
+When I'm not coding, I'm usually at the gym, reading, or playing video games.

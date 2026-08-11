@@ -13,8 +13,13 @@ images:
 links: []
 ---
 
-A smart birdhouse built around a Raspberry Pi Zero with a Pi Camera NoIR module and a GPIO motion sensor. Originally developed as a capstone project, I'm actively revisiting and improving it with new hardware and better techniques.
+A smart birdhouse built around a Raspberry Pi Zero with a Pi Camera NoIR module
+and a GPIO motion sensor. Originally developed as a capstone project, I'm
+actively revisiting and improving it with new hardware and better techniques.
 
-Python handles the main orchestration loop -- detecting motion, capturing images, and sending notifications through a Discord bot and email mailing list. A basic dashboard site provides a view of recent captures and activity.
+Python handles the main orchestration loop -- detecting motion, capturing
+images, and sending notifications through a Discord bot and email mailing list.
+A basic dashboard site provides a view of recent captures and activity.
 
-The birdhouse itself is handmade with a waterproof housing for the electronics and runs on battery power for flexible outdoor placement.
+The birdhouse itself is handmade with a waterproof housing for the electronics
+and runs on battery power for flexible outdoor placement.
