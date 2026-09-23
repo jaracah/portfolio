@@ -2,7 +2,7 @@
 title: Social Recipe Manager
 summary: A full-stack, social recipe app, enhanced with AI features.
 order: 1
-tags: [Go, Swift, PostgreSQL, Terraform, GenAI, Google Cloud Platform]
+tags: [Go, Swift, PostgreSQL, Terraform, GenAI, AWS]
 images:
   - src: /images/recipe-manager/feed-1.png
     alt: Recipe feed
@@ -32,10 +32,10 @@ Features include:
   friends to cook along in real time
 - **Notifications:** push notifications for social activity and meal reminders
 
-The backend is hosted on Google Cloud Platform, with infrastructure managed
-through Terraform. Go has quickly become one of my favorite languages -- I use
-it daily at work building microservices and internal tooling, and this app keeps
-me pushing further with it outside of working hours.
+The backend is hosted on AWS, with infrastructure managed through Terraform. Go
+has quickly become one of my favorite languages -- I use it daily at work
+building microservices and internal tooling, and this app keeps me pushing
+further with it outside of working hours.
 
 Targeting a 2026 release. The code is in a private repo for now, but I'm happy
 to demo the live version or walk through specific technical decisions.
