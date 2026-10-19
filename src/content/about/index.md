@@ -4,25 +4,29 @@ tagline: Software Engineer and Scrum Master
 ---
 
 I'm a software engineer in North Carolina. I studied computer science at
-Appalachian State, and since 2022 I've been at Inmar Intelligence. I started out
-building microservices on Hadoop as a new grad and now serve as tech lead and
-scrum master for two teams. Most recently leading a division-wide migration to
-OAuth 2.0 and Auth0.
+Appalachian State, where data science and computer systems were my favorite
+areas. I joined Inmar Intelligence in 2022 and started out as a new grad
+building microservices on Hadoop. Now I'm working as a tech lead and the scrum
+master for two teams. I recently led a division-wide migration to OAuth 2.0 and
+Auth0, and right now I'm leading a greenfield app that's launching soon.
 
-Most of my work is with building distributed systems and the infrastructure
-behind them: event-driven Java & Go microservices, Kubernetes, and cloud
-architecture on GCP. I like to work on the things that we don't want to break,
-like identity and auth across an entire division, financial processing
-pipelines, and platforms handling multi-terabyte healthcare datasets. I'm also
-deep in the AI side of engineering, not just using the tools but setting the
-standards and guardrails that took two teams from experimenting with agents to
-shipping with them in production daily.
+Most of my focus is on data and distributed systems, mainly event-driven
+microservices in Java and Go running on Kubernetes in GCP. A lot of my work has
+been on systems that really can't go down, like auth for a whole division,
+financial processing pipelines, and platforms that handle multi-terabyte
+healthcare datasets. I also helped my teams start using AI in our work. I pushed
+for good practices early on and got everyone involved in deciding how we use it,
+and now both teams ship code safely and efficiently with AI agents every day.
 
-Outside of work I am constantly building things for myself and others, currently
-a social recipe platform with AI-powered imports, and algorithmic trading bots.
-Systems that run unattended with real money on the line have to be resilient by
-design, and that's the kind of thing I like building. Back in college, C and
-computer systems were what hooked me most, and I keep working at that level on
-my own time.
+Outside of work I'm usually building something, and I still write low-level code
+by hand to keep my skills sharp. Right now I'm working on a social recipe
+platform where I practice building useful AI-powered features. I've also been
+researching and experimenting with algorithmic trading, reading, developing
+strategies, backtesting them, and running paper bots. One of them is currently
+running live against an exchange, actively trading, and net positive. I built
+the infrastructure and systems for me to reliably iterate and deploy strategies,
+monitor and manage active bots from anywhere, and deterministically manage risk.
+When a program runs on its own with real money on the line, it has to be
+reliable, and I love challenges like that.
 
 When I'm not coding, I'm usually at the gym, reading, or playing video games.
