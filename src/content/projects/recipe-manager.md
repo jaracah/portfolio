@@ -1,17 +1,24 @@
 ---
-title: Social Recipe Manager
+title: Social Recipe Platform
 summary: A full-stack, social recipe app, enhanced with AI features.
 order: 1
 tags: [Go, Swift, PostgreSQL, Terraform, GenAI, AWS]
 images:
-  - src: /images/recipe-manager/feed-1.png
-    alt: Recipe feed
-  - src: /images/recipe-manager/recipe-detail-1.png
-    alt: Recipe detail view
-  - src: /images/recipe-manager/profile-1.png
-    alt: User profile and collections
-  - src: /images/recipe-manager/add-recipe-1.png
-    alt: Add recipe view
+  - src: /images/recipe-manager/duo-recipe.png
+    alt: Recipe detail with ingredient scaling and unit conversion on iPhone Duo
+  - src: /images/recipe-manager/duo-cookmode.png
+    alt:
+      Step-by-step cook mode showing the ingredients for each step on iPhone Duo
+  - src: /images/recipe-manager/iphone-feed.png
+    alt: Home recipe feed on iPhone
+  - src: /images/recipe-manager/phone-cookbook.png
+    alt: Cookbook example on iPhone
+  - src: /images/recipe-manager/duo-calendar.png
+    alt: Weekly meal planning calendar on iPhone Duo
+  - src: /images/recipe-manager/duo-lists.png
+    alt: Shopping list with progress tracking on iPhone Duo
+  - src: /images/recipe-manager/phone-profile.png
+    alt: User profile with recipe posts on iPhone
 links: []
 ---
 
